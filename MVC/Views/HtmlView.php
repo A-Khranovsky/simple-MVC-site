@@ -12,7 +12,9 @@ class HtmlView extends ViewFactory
 		<meta charset="utf-8">
 	</head>
 	<body>
-		{{{body}}}				
+		{{{body}}}
+		<br />
+		<a href=""				
 	</body>
 	</html>
 	HTML;
