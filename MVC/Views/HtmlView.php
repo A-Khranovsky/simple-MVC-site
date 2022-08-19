@@ -35,9 +35,9 @@ class HtmlView extends ViewFactory
 //        }
         $content = [];
         foreach ($this->replacements['{{{body}}}'] as $body){
-            $content[] = str_replace(array_keys($this->replacements), $body, self::LAYOUT);
+            yield str_replace(array_keys($this->replacements), $body, self::LAYOUT);
         }
-        return $content[0];
+        //return $content[0];
 //        return str_replace(
 //            array_keys($this->replacements),
 //            array_values($this->replacements),

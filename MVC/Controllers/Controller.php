@@ -25,6 +25,10 @@ class Controller
         $decorator = \MVC\Decorators\DecoratorFactory::create($this->router->ext, $class, $this->model);
 
         $view = \MVC\Views\ViewFactory::create($this->router->ext, $class, $decorator);
-        return $view->render();
+        $result = [];
+        foreach ($view->render() as $item) {
+            $result[] = $item;
+        }
+        return $result[0];
     }
 }
