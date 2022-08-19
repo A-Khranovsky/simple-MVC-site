@@ -29,10 +29,19 @@ class HtmlView extends ViewFactory
 
     public function render()
     {
-        return str_replace(
-            array_keys($this->replacements),
-            array_values($this->replacements),
-            self::LAYOUT
-        );
+//        var_dump($this->replacements['{{{body}}}']); exit;
+//        foreach ($this->replacements['{{{title}}}'] as $title){
+//
+//        }
+        $content = [];
+        foreach ($this->replacements['{{{body}}}'] as $body){
+            $content[] = str_replace(array_keys($this->replacements), $body, self::LAYOUT);
+        }
+        return $content[0];
+//        return str_replace(
+//            array_keys($this->replacements),
+//            array_values($this->replacements),
+//            self::LAYOUT
+//        );
     }
 }

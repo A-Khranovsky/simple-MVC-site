@@ -20,7 +20,8 @@ class Controller
     public function render()
     {
         $class = get_class($this->model);
-        $class = end(explode('\\', $class));
+        $buf = explode('\\', $class);
+        $class = end($buf);
         $decorator = \MVC\Decorators\DecoratorFactory::create($this->router->ext, $class, $this->model);
 
         $view = \MVC\Views\ViewFactory::create($this->router->ext, $class, $decorator);

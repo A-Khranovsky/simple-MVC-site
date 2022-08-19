@@ -9,7 +9,7 @@ class Router
     public static function parse($path)
     {
         $path = explode('/', $path);
-        list($path, $ext) = explode('.', end($path));
+        list($path, $ext) = explode('.', end($path)); //handling only the end from the last slash
         $arr = explode('/', $path);
         return new self($arr[0], $ext, count($arr) > 1 ? $arr[1] : null);
     }
