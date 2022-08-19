@@ -13,7 +13,16 @@ class PagesDecorator extends DecoratorFactory
 
     public function title()
     {
-        return 'Pages';
+//        return $this->collection_render(
+//            function ($item) {
+//                $decorated_item = new PageDecorator($item);
+//                return $decorated_item->title();
+//            }
+//        );
+        foreach ($this->pages->collection as $item) {
+            $decorated_item = new PageDecorator($item);
+            yield $decorated_item->title();
+        }
     }
 
     public function collection_render($call, $separator = '<br />')
@@ -27,12 +36,16 @@ class PagesDecorator extends DecoratorFactory
 
     public function body()
     {
-        return $this->collection_render(
-            function ($item) {
-                $decorated_item = new PageDecorator($item);
-                return $decorated_item->body();
-            }
-        );
+//        return $this->collection_render(
+//            function ($item) {
+//                $decorated_item = new PageDecorator($item);
+//                return $decorated_item->body();
+//            }
+//        );
+        foreach ($this->pages->collection as $item) {
+            $decorated_item = new PageDecorator($item);
+            yield $decorated_item->body();
+        }
     }
 
     public function items()

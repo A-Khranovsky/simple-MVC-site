@@ -12,36 +12,44 @@ class HtmlView extends ViewFactory
 		<meta charset="utf-8">
 	</head>
 	<body>
-		{{{body}}}
+		{{{body}}}				
 	</body>
 	</html>
 	HTML;
 
-    protected $replacements;
+    protected $replacements,
+        $titles, $bodies;
 
     public function __construct($decorator)
     {
+        foreach ($decorator->title() as $title){
+            $this->titles[] = $title;
+        }
+        foreach ($decorator->body() as $body){
+            $this->bodies[] = $body;
+        }
+        $this->replacementsInit();
+    }
+
+    private function replacementsInit($page = null)
+    {
+        if(is_null($page)){
+            $page = 0;
+        }
         $this->replacements = [
-            '{{{title}}}' => $decorator->title(),
-            '{{{body}}}' => $decorator->body()
+            '{{{title}}}' => $this->titles[$page],
+            '{{{body}}}' => $this->bodies[$page]
         ];
     }
 
-    public function render()
+    public function render($page = null)
     {
-//        var_dump($this->replacements['{{{body}}}']); exit;
-//        foreach ($this->replacements['{{{title}}}'] as $title){
-//
-//        }
-        $content = [];
-        foreach ($this->replacements['{{{body}}}'] as $body){
-            yield str_replace(array_keys($this->replacements), $body, self::LAYOUT);
-        }
-        //return $content[0];
-//        return str_replace(
-//            array_keys($this->replacements),
-//            array_values($this->replacements),
-//            self::LAYOUT
-//        );
+        $this->replacementsInit($page);
+
+        return str_replace(
+            array_keys($this->replacements),
+            array_values($this->replacements),
+            self::LAYOUT
+        );
     }
 }
