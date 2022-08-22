@@ -26,8 +26,7 @@ class Controller
         (
             $this->router->ext,
             $class,
-            $this->model,
-            $this->router->page,
+            $this->model
         );
 
         $view = \MVC\Views\ViewFactory::create($this->router->ext, $class, $decorator, $this->router->page - 1);

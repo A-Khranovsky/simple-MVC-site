@@ -13,12 +13,6 @@ class PagesDecorator extends DecoratorFactory
 
     public function title()
     {
-//        return $this->collection_render(
-//            function ($item) {
-//                $decorated_item = new PageDecorator($item);
-//                return $decorated_item->title();
-//            }
-//        );
         foreach ($this->pages->collection as $item) {
             $decorated_item = new PageDecorator($item);
             yield $decorated_item->title();
@@ -36,12 +30,6 @@ class PagesDecorator extends DecoratorFactory
 
     public function body()
     {
-//        return $this->collection_render(
-//            function ($item) {
-//                $decorated_item = new PageDecorator($item);
-//                return $decorated_item->body();
-//            }
-//        );
         foreach ($this->pages->collection as $item) {
             $decorated_item = new PageDecorator($item);
             yield $decorated_item->body();
