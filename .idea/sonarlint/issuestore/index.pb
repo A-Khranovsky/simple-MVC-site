@@ -6,5 +6,3 @@
 robots.txt,3\7\377f6a321ea49092ae656938a73989aed62ca738
 S
 #.docker/php-apache/000-default.conf,3\9\39fa5ab4caae8c73bb5e30fbeaf7c1d2fe616b66
-9
-	index.php,b\b\bb6499b8e938f92a3695fff1afe57edea4b9efb7
