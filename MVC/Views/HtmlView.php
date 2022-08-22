@@ -41,8 +41,7 @@ class HtmlView extends ViewFactory
                 $pervious = 1;
             }
             $next = $pervious + 1;
-            if($next == $key + 1)
-            {
+            if($next == $key + 1) {
                 $next++;
             }
 

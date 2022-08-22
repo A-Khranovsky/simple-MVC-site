@@ -12,7 +12,8 @@ class Pages
             $pages = [
 
                 new Page('Title1', 'Content1'),
-                new Page('Title2', 'Content2')
+                new Page('Title2', 'Content2'),
+                new Page('Title3', 'Content3')
             ];
         }
         $this->collection = $pages;
