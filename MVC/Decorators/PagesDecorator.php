@@ -48,6 +48,14 @@ class PagesDecorator extends DecoratorFactory
         }
     }
 
+    public function pagesBar()
+    {
+        foreach ($this->pages->collection as $item) {
+            $decorated_item = new PageDecorator($item);
+            yield $decorated_item-> pagesBar();
+        }
+    }
+
     public function items()
     {
         return $this->collection_render(

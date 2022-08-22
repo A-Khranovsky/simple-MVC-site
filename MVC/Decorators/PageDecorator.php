@@ -4,7 +4,7 @@ namespace MVC\Decorators;
 
 class PageDecorator extends DecoratorFactory
 {
-    public $page;
+    public $page, $pageNumber;
 
     public function __construct($page)
     {
@@ -27,5 +27,12 @@ class PageDecorator extends DecoratorFactory
                     '<title>' . htmlspecialchars($this->title()) . '</title>' .
                     '<content>' . htmlspecialchars($this->page->content) . '</content>' .
                 '</item>';
+    }
+
+    public function pagesBar()
+    {
+        return <<<pagesBar
+            <a href="?page={{{pervious}}}"><-</a>&nbsp&nbsp<a href="?page={{{next}}}">-></a>
+    pagesBar;
     }
 }

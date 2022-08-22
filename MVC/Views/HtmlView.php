@@ -14,39 +14,58 @@ class HtmlView extends ViewFactory
 	<body>
 		{{{body}}}
 		<br />
-		<a href=""				
+		{{{pagesBar}}}				
 	</body>
 	</html>
 	HTML;
 
-    protected $replacements,
-        $titles, $bodies;
+    protected $replacements, $page,
+        $titles, $bodies, $pagesBars, $decorator;
 
-    public function __construct($decorator)
+    public function __construct($decorator, $page)
     {
-        foreach ($decorator->title() as $title){
+        $this->decorator = $decorator;
+        $this->page = $page;
+
+        foreach ($decorator->title() as $title) {
             $this->titles[] = $title;
         }
-        foreach ($decorator->body() as $body){
+        foreach ($decorator->body() as $body) {
             $this->bodies[] = $body;
         }
-        $this->replacementsInit();
+
+        foreach ($decorator->pagesBar() as $key => $pagesBar) {
+            $pervious = $key;
+
+            if ($pervious == 0) {
+                $pervious = 1;
+            }
+            $next = $pervious + 1;
+            if($next == $key + 1)
+            {
+                $next++;
+            }
+
+            $this->pagesBars[] = str_replace(
+                ['{{{pervious}}}', '{{{next}}}'],
+                [$pervious, $next],
+                $pagesBar);
+        }
+        $this->replacementsInit($page);
     }
 
-    private function replacementsInit($page = null)
+    private function replacementsInit($page)
     {
-        if(is_null($page)){
-            $page = 0;
-        }
         $this->replacements = [
             '{{{title}}}' => $this->titles[$page],
-            '{{{body}}}' => $this->bodies[$page]
+            '{{{body}}}' => $this->bodies[$page],
+            '{{{pagesBar}}}' => $this->pagesBars[$page]
         ];
     }
 
-    public function render($page = null)
+    public function render()
     {
-        $this->replacementsInit($page);
+        $this->replacementsInit($this->page);
 
         return str_replace(
             array_keys($this->replacements),

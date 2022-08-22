@@ -17,7 +17,7 @@ class RssView extends ViewFactory
 
     protected $replacements;
 
-    public function __construct($decorator)
+    public function __construct($decorator, $page)
     {
         $this->replacements = [
             '{{{title}}}' => $decorator->title(),

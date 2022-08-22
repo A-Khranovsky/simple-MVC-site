@@ -22,10 +22,16 @@ class Controller
         $class = get_class($this->model);
         $buf = explode('\\', $class);
         $class = end($buf);
-        $decorator = \MVC\Decorators\DecoratorFactory::create($this->router->ext, $class, $this->model);
+        $decorator = \MVC\Decorators\DecoratorFactory::create
+        (
+            $this->router->ext,
+            $class,
+            $this->model,
+            $this->router->page,
+        );
 
-        $view = \MVC\Views\ViewFactory::create($this->router->ext, $class, $decorator);
+        $view = \MVC\Views\ViewFactory::create($this->router->ext, $class, $decorator, $this->router->page - 1);
 
-        return $view->render($this->router->page - 1);
+        return $view->render();
     }
 }

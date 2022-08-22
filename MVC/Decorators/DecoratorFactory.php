@@ -4,6 +4,7 @@ namespace MVC\Decorators;
 
 abstract class DecoratorFactory
 {
+
     public static function create($type, $class, $model)
     {
         $class = 'MVC\\Decorators\\' . ucfirst($class) . 'Decorator';
@@ -12,5 +13,6 @@ abstract class DecoratorFactory
 
     abstract public function title();
     abstract public function body();
+    abstract public function pagesBar();
     abstract public function items();
 }
