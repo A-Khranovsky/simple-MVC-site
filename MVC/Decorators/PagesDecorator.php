@@ -21,11 +21,10 @@ class PagesDecorator extends DecoratorFactory
 
     public function collection_render($call, $separator = '<br />')
     {
-//        return implode(
-//            $separator,
-//            array_map($call, $this->pages->collection)
-//        );
-        return array_map($call, $this->pages->collection);
+        return implode(
+            $separator,
+            array_map($call, $this->pages->collection)
+        );
     }
 
     public function body()
