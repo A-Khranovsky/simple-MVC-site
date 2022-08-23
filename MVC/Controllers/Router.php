@@ -15,7 +15,7 @@ class Router
         $arr = explode('/', $path);
 
         $ext = explode('?', $ext);
-        if(count($ext) == 2){
+        if (count($ext) == 2) {
             $buf = explode('=', $ext[1]);
             $page = end($buf);
         } else {

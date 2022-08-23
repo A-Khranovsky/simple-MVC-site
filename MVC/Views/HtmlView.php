@@ -27,10 +27,10 @@ class HtmlView extends ViewFactory
         $this->decorator = $decorator;
         $this->page = $page;
 
-        foreach($decorator->title() as $title){
+        foreach ($decorator->title() as $title) {
             $this->titles[] = $title;
         }
-        foreach($decorator->body() as $body){
+        foreach ($decorator->body() as $body) {
             $this->bodies[] = $body;
         }
         foreach ($decorator->pagesBar() as $key => $pagesBar) {
@@ -40,14 +40,15 @@ class HtmlView extends ViewFactory
                 $pervious = 1;
             }
             $next = $pervious + 1;
-            if($next == $key + 1) {
+            if ($next == $key + 1) {
                 $next++;
             }
 
             $this->pagesBars[] = str_replace(
                 ['{{{pervious}}}', '{{{next}}}'],
                 [$pervious, $next],
-                $pagesBar);
+                $pagesBar
+            );
         }
         $this->replacementsInit($page);
     }

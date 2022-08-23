@@ -22,12 +22,11 @@ class Controller
     public function render()
     {
         $cache = $this->redis->get($this->path);
-        if(!$cache) {
+        if (!$cache) {
             $class = get_class($this->model);
             $buf = explode('\\', $class);
             $class = end($buf);
-            $decorator = \MVC\Decorators\DecoratorFactory::create
-            (
+            $decorator = \MVC\Decorators\DecoratorFactory::create(
                 $this->router->ext,
                 $class,
                 $this->model
