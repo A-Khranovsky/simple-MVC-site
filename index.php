@@ -8,5 +8,5 @@ spl_autoload_register();
 
 use MVC\Controllers\Controller;
 
-$obj = new Controller($_SERVER['REQUEST_URI']);
+$obj = new Controller($_SERVER['REQUEST_URI'], $redis);
 echo $obj->render();
