@@ -2,7 +2,7 @@
 
 namespace MVC\Models;
 
-class Pages implements \Iterator
+class Pages
 {
     public $collection;
     private $index;
@@ -18,30 +18,5 @@ class Pages implements \Iterator
             ];
         }
         $this->collection = $pages;
-    }
-
-    public function current()
-    {
-        return $this->collection[$this->key()];
-    }
-
-    public function next()
-    {
-        ++$this->index;
-    }
-
-    public function key()
-    {
-        return $this->index;
-    }
-
-    public function valid()
-    {
-        return isset($this->collection[$this->index]);
-    }
-
-    public function rewind()
-    {
-        $this->index = 0;
     }
 }
