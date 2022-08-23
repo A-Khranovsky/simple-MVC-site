@@ -35,9 +35,9 @@ service redis-server restart
 1) "/pages.html?page=1"
 2) "/pages.html?page=2"
 3) "/pages.html?page=3"
-   127.0.0.1:6379> get /pages.html?page=1
-   "<!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n\t<title>Title1</title>\n\t<meta charset=\"utf-8\">\n</head>\n<body>\n\t<h1>Title1</h1><p>Content1</p>\n\t
-   <br />\n\t        <a href=\"?page=1\"><-</a>&nbsp&nbsp<a href=\"?page=2\">-></a>\t\t\t\t\n</body>\n</html>"
-   127.0.0.1:6379>
+127.0.0.1:6379> get /pages.html?page=1
+"<!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n\t<title>Title1</title>\n\t<meta charset=\"utf-8\">\n</head>\n<body>\n\t<h1>Title1</h1><p>Content1</p>\n\t
+<br />\n\t        <a href=\"?page=1\"><-</a>&nbsp&nbsp<a href=\"?page=2\">-></a>\t\t\t\t\n</body>\n</html>"
+127.0.0.1:6379>
 ```
 
