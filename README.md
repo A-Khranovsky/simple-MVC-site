@@ -27,7 +27,7 @@ composer update
 ```angular2html
 service redis-server restart
 ```
-* visit: http://localhost/pages.htm?page=1
+* visit: http://localhost/pages.html?page=1
 
 ### Some output example (example of cache):
 ```
